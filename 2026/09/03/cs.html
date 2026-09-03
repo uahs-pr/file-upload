@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>防护测试</title>
+<style>
+body{font-family:sans-serif;background:#1a1a2e;color:white;padding:20px;max-width:500px;margin:0 auto}
+button{width:100%;padding:14px;margin:8px 0;border:none;border-radius:10px;font-size:16px;cursor:pointer}
+.btn1{background:#ef4444;color:white}
+.btn2{background:#f59e0b;color:white}
+.btn3{background:#22c55e;color:white}
+#result{background:rgba(0,0,0,0.3);padding:16px;border-radius:10px;margin-top:16px;font-size:14px;word-break:break-all;min-height:60px}
+h2{text-align:center}
+</style>
+</head>
+<body>
+<h2>🔍 上传接口防护测试</h2>
+<p style="opacity:0.7;font-size:14px">从你自己的域名打开这个页面，Referer 才是正确的</p>
+
+<button class="btn1" onclick="test1()">❌ 测试1：不带头（预期非法请求）</button>
+<button class="btn2" onclick="test2()">⚠️ 测试2：带错误的key（预期非法请求）</button>
+<button class="btn3" onclick="test3()">✅ 测试3：带正确的key（预期提示没有选择文件）</button>
+
+<div id="result">点击上面按钮查看结果</div>
+
+<script>
+const API = 'https://koy.dpdns.org/api/upload';
+const KEY = 'koy_upload_2024';
+const result = document.getElementById('result');
+
+async function test1(){
+  result.textContent = '⏳ 测试中...';
+  try{
+    const r = await fetch(API, {method:'POST', body:new FormData()});
+    const t = await r.text();
+    result.innerHTML = '<b>测试1结果：</b><br>' + t + '<br><br>' + (t.includes('非法请求') ? '✅ 防护生效！' : '❌ 防护失效！');
+  }catch(e){ result.textContent = '错误：' + e.message; }
+}
+
+async function test2(){
+  result.textContent = '⏳ 测试中...';
+  try{
+    const r = await fetch(API, {method:'POST', headers:{'X-Upload-Key':'wrong_key'}, body:new FormData()});
+    const t = await r.text();
+    result.innerHTML = '<b>测试2结果：</b><br>' + t + '<br><br>' + (t.includes('非法请求') ? '✅ 防护生效！' : '❌ 防护失效！');
+  }catch(e){ result.textContent = '错误：' + e.message; }
+}
+
+async function test3(){
+  result.textContent = '⏳ 测试中...';
+  try{
+    const r = await fetch(API, {method:'POST', headers:{'X-Upload-Key':KEY}, body:new FormData()});
+    const t = await r.text();
+    result.innerHTML = '<b>测试3结果：</b><br>' + t + '<br><br>' + (t.includes('没有选择文件') ? '✅ 头验证通过，防护正常！' : '⚠️ 检查返回内容');
+  }catch(e){ result.textContent = '错误：' + e.message; }
+}
+</script>
+</body>
+</html>
